@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+
+        .result-box {
+            margin: 10px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-box button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-box button:hover {
+            background-color: darkblue;
+        }
+
+        .result-list li {
+            color: red;
+            font-weight: bold;
+        }
+
+        .not-found-message {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Add consistent styling for the form and move it to the right */
+        .form-inline {
+            display: flex;
+            justify-content: flex-end;
+            /* Align content to the right */
+            margin: 20px 20px 20px 0;
+            /* Add right margin for spacing */
+        }
+
+        .form-control {
+            width: 300px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-left: 5px;
+        }
+
+        .btn:focus,
+        .btn:active {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Search Results</h1>
+
+    <form method="POST" action='/searchresults' class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <!-- Display Search Results -->
+    <% if (matchingDestinations && matchingDestinations.length> 0) { %>
+        <ul class="result-list">
+            <% matchingDestinations.forEach(destination=> { %>
+                <li>
+                    <%= destination.name %>
+                        <a href="/<%= destination.name %>">Go to destination</a>
+                </li>
+                <% }); %>
+        </ul>
+        <% } else if (notFoundMessage) { %>
+            <p class="not-found-message">
+                <%= notFoundMessage %>
+            </p>
+            <% } else { %>
+                <p class="not-found-message">Please enter a destination to search.</p>
+                <% } %>
+
+</body>
+
+</html>

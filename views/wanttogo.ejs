@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+
+        .destination-list {
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .destination-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .destination-list li {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Want-to-Go List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Want-to-Go List</a>
+    </nav>
+    <h1>Your Want-to-Go Destinations</h1>
+    <div class="destination-list">
+        <% if (destinations.length> 0) { %>
+            <ul>
+                <% destinations.forEach(destination=> { %>
+                    <li>
+                        <%= destination %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } else { %>
+                <p>You have no destinations in your Want-to-Go List yet.</p>
+                <% } %>
+    </div>
+</body>
+
+</html>
